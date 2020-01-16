@@ -2,24 +2,27 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            formControlName="username"
-            class="form-control">
-          <span *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched" class="help-block">Please enter a name!</span>
+        <div formGroupName="userdata">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              formControlName="username"
+              class="form-control">
+            <span *ngIf="!signupForm.get('userdata.username').valid && signupForm.get('userdata.username').touched" class="help-block">Please enter a name!</span>
+          </div>
+          <div class="form-group">
+            <label for="email">email</label>
+            <input
+              type="text"
+              id="email"
+              formControlName="email"
+              class="form-control">
+            <span *ngIf="!signupForm.get('userdata.email').valid && signupForm.get('userdata.email').touched" class="help-block">Please enter valid email!</span>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="email">email</label>
-          <input
-            type="text"
-            id="email"
-            formControlName="email"
-            class="form-control">
-          <span *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched" class="help-block">Please enter valid email!</span>
-        </div>
+        
         <div class="radio" *ngFor="let gender of genders">
           <label>
             <input
